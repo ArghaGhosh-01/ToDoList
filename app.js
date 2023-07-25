@@ -8,11 +8,11 @@ app.get("/", function(req, res){
 
     if(today.getDay() == 6 || today.getDay() == 0)
     {
-        res.send("Weekend");
+        res.sendFile(__dirname+"/weekend.html");
     }
     else
     {
-        res.sendFile(__dirname+"/index.html");
+        res.sendFile(__dirname+"/weekday.html");
     }
 
 });
