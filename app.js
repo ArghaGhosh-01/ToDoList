@@ -3,17 +3,22 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+app.set('view engine', 'ejs');
+
 app.get("/", function(req, res){
     var today = new Date();
+    var day = "";
 
     if(today.getDay() == 6 || today.getDay() == 0)
     {
-        res.sendFile(__dirname+"/weekend.html");
+        day = "Weekend";
     }
     else
     {
-        res.sendFile(__dirname+"/weekday.html");
+        day = "Weekday";
     }
+
+    res.render("list", {kindofday: day});
 
 });
 
