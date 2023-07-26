@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div id="heading" class="box">
+        <h1><%= kindofday %></h1>
 
-    <h1><%= kindofday %></h1>
+    </div>
+<div class="box">
 
-    <ul>
-<% for( var i=0; i<newlistitems.length; i++){ %>
-    <li> <%= newlistitems[i] %> </li>
-<% } %>
+    
+    <% for( var i=0; i<newlistitems.length; i++){ %>
+    <div class="item">
+        <input type="checkbox">
+            <p> <%= newlistitems[i] %> </p>
+            
+        </div>
+        <% } %>
+        <form class="item" action="/" method="post">
+            <input type="text" name="newitem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="submit">+</button>
+        </form>
+    </div>
 
-    </ul>
-
-    <form class="" action="/" method="post">
-        <input type="text" name="newitem">
-        <button type="submit" name="submit">ADD</button>
-    </form>
 
 </body>
 </html>
