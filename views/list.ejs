@@ -6,9 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> 
-        <%= kindofday %> 
-    </h1>
+
+<% if(kindofday === "Sunday" || kindofday === "Saturday"){ %>
+    <h1 style="color: green;"> Its a <%= kindofday %> </h1>
+<% }else{ %>
+    <h1 style="color: red;"> Its a <%= kindofday %> </h1>
     <p>Please work</p>
+<%} %>
 </body>
 </html>
