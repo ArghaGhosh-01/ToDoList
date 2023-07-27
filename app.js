@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 var items =[];
+var workitems = [];
 
 app.set('view engine', 'ejs');
 
@@ -22,17 +23,36 @@ app.get("/", function (req, res) {
     var day = today.toLocaleDateString("en-IN", options);
 
     res.render("list", {
-         kindofday: day,
+         listtitle: day,
          newlistitems: items
         });
 
 });
 
 app.post("/",function (req,res) {
-    var item = req.body.newitem;
-    items.push(item);
-    res.redirect("/");
-})
+    let item = req.body.newitem;
+
+    if(req.body.list === "work")
+    {
+        workitems.push(items);
+        res.redirect("/work");
+    }
+    else
+    {
+        items.push(item);
+        res.redirect("/");
+    }
+});
+
+app.get("/work",function (req,res) {
+    res.render("list", {listtitle: "Work list", newlistitems: workitems});    
+});
+
+app.post("/work", function (req, res) {
+    let item = req.body.newitem;
+    workitems.push(item);
+    res.redirect("/work");
+});
 
 app.listen(3000, function () {
     console.log("Server started on port 3000.");
